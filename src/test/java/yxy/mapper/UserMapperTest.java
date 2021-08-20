@@ -6,9 +6,7 @@ import org.junit.Test;
 import yxy.model.SysRole;
 import yxy.model.SysUser;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class UserMapperTest extends BaseMapperTest{
     @Test
@@ -307,6 +305,24 @@ public class UserMapperTest extends BaseMapperTest{
             }
             int result = userMapper.insertList(userList);
             Assert.assertEquals(2, result);
+        }finally {
+            sqlSession.rollback();
+            sqlSession.close();
+        }
+    }
+
+    @Test
+    public void testUpdateByMap(){
+        SqlSession sqlSession = getSqlSession();
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("id", 1L);
+            map.put("user_email", "test@mybatis.com.cn");
+            map.put("user_password", "12345678");
+            userMapper.updateByMap(map);
+            SysUser user = userMapper.selectById(1L);
+            Assert.assertEquals("test@mybatis.com.cn", user.getUserEmail());
         }finally {
             sqlSession.rollback();
             sqlSession.close();

@@ -5,6 +5,7 @@ import yxy.model.SysRole;
 import yxy.model.SysUser;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserMapper {
     SysUser selectById(Long id);
@@ -21,4 +22,5 @@ public interface UserMapper {
     SysUser selectByIdOrUserName(SysUser sysUser);
     List<SysUser> selectByIdList(List<Long> idList);
     int insertList(List<SysUser> userList);
+    int updateByMap(Map<String, Object> map);
 }
