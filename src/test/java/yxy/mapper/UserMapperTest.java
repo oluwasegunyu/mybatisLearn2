@@ -228,4 +228,25 @@ public class UserMapperTest extends BaseMapperTest{
             sqlSession.close();
         }
     }
+
+
+    @Test
+    public void testInsert2Selective(){
+        SqlSession sqlSession = getSqlSession();
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+            SysUser user = new SysUser();
+            user.setUserName("test-selective");
+            user.setUserPassword("1234321");
+            user.setUserInfo("test info");
+            user.setCreateTime(new Date());
+            userMapper.insert2(user);
+            user = userMapper.selectById(user.getId());
+            Assert.assertEquals("test@mybatis.tk", user.getUserEmail());
+        }finally {
+            sqlSession.rollback();
+            sqlSession.close();
+        }
+    }
 }
