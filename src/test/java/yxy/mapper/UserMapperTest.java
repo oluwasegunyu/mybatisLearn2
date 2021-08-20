@@ -291,4 +291,25 @@ public class UserMapperTest extends BaseMapperTest{
             sqlSession.close();
         }
     }
+
+    @Test
+    public void testInsertList(){
+        SqlSession sqlSession = getSqlSession();
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            List<SysUser> userList = new ArrayList<>();
+            for(int i=0; i<2; i++){
+                SysUser user = new SysUser();
+                user.setUserName("test"+ i);
+                user.setUserPassword("123456");
+                user.setUserEmail("test.mybatis.cn");
+                userList.add(user);
+            }
+            int result = userMapper.insertList(userList);
+            Assert.assertEquals(2, result);
+        }finally {
+            sqlSession.rollback();
+            sqlSession.close();
+        }
+    }
 }
