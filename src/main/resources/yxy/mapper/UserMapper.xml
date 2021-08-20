@@ -128,7 +128,7 @@
 
     <update id="updateByIdSelective">
         update sys_user
-        set
+        <set>
             <if test="userName != null and userName != ''">
                 user_name = #{userName},
             </if>
@@ -148,6 +148,7 @@
                 create_time = #{createTime, jdbcType=TIMESTAMP},
             </if>
             id = #{id}
+        </set>
         where id = #{id}
     </update>
 
