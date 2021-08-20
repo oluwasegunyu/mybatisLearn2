@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatisLearn?useSSL=false&amp;useUnicode=trueserverTimezone=Hongkong&amp;serverTimezone=Hongkong&amp;characterEncoding=UTF-8&amp;autoReconnect=true"/>
+                <property name="username" value="yxy"/>
+                <property name="password" value="yxy108"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <package name="yxy.mapper"/>
+<!--        <mapper resource="yxy/mapper/UserMapper.xml"/>-->
+<!--        <mapper resource="yxy/mapper/PrivilegeMapper.xml"/>-->
+<!--        <mapper resource="yxy/mapper/RoleMapper.xml"/>-->
+<!--        <mapper resource="yxy/mapper/RolePrivilegeMapper.xml"/>-->
+<!--        <mapper resource="yxy/mapper/UserRole.xml"/>-->
+    </mappers>
+</configuration>
