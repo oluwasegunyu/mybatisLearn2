@@ -178,4 +178,32 @@ public class UserMapperTest extends BaseMapperTest{
             sqlSession.close();
         }
     }
+
+    @Test
+    public void testSelectByUser(){
+        SqlSession sqlSession = getSqlSession();
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            // 只查询用户名
+            SysUser query = new SysUser();
+            query.setUserName("ad");
+            List<SysUser> userList = userMapper.selectByUser(query);
+            Assert.assertTrue(userList.size()>0);
+
+            //只查询邮箱
+            query = new SysUser();
+            query.setUserEmail("test@mybatis.tk");
+            userList = userMapper.selectByUser(query);
+            Assert.assertTrue(userList.size()>0);
+
+            //select name and email
+            query = new SysUser();
+            query.setUserEmail("test@mybatis.tk");
+            query.setUserName("ad");
+            userList = userMapper.selectByUser(query);
+            Assert.assertTrue(userList.size()==0);
+        }finally {
+            sqlSession.close();
+        }
+    }
 }

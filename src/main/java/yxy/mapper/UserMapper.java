@@ -16,4 +16,5 @@ public interface UserMapper {
     int updateById(SysUser sysUser);
     int deleteById(SysUser sysUser);
     List<SysRole> selectRoleByUserIdAndRoleEnabled(@Param("userId") Long userId, @Param("enabled") Integer enabled);
+    List<SysUser> selectByUser(SysUser sysUser);
 }
