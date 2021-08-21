@@ -1,6 +1,7 @@
 package yxy.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class SysUser {
     private Long id;
@@ -10,6 +11,16 @@ public class SysUser {
     private String userInfo;
     private byte[] headImg;
     private Date createTime;
+    private SysRole role;
+    private List<SysRole> roleList;
+
+    public List<SysRole> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<SysRole> roleList) {
+        this.roleList = roleList;
+    }
 
     public SysRole getRole() {
         return role;
@@ -19,7 +30,7 @@ public class SysUser {
         this.role = role;
     }
 
-    private SysRole role;
+
 
     public Long getId() {
         return id;
