@@ -266,13 +266,7 @@
 
 
     <resultMap id="userRoleMap3" extends="userMap" type="yxy.model.SysUser">
-        <association property="role" columnPrefix="role_" javaType="yxy.model.SysRole">
-            <result property="id" column="id"/>
-            <result property="roleName" column="role_name"/>
-            <result property="enabled" column="enabled"/>
-            <result property="createBy" column="create_by"/>
-            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
-        </association>
+        <association property="role" columnPrefix="role_" resultMap="yxy.mapper.RoleMapper.RoleMap"/>
     </resultMap>
     <select id="selectUserAndRoleById3" resultMap="userRoleMap3">
     select
