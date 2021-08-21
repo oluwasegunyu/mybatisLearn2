@@ -11,6 +11,16 @@ public class SysUser {
     private byte[] headImg;
     private Date createTime;
 
+    public SysRole getRole() {
+        return role;
+    }
+
+    public void setRole(SysRole role) {
+        this.role = role;
+    }
+
+    private SysRole role;
+
     public Long getId() {
         return id;
     }
